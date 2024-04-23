@@ -48,6 +48,79 @@ NB: For RAG and Function calling, we can use Assistant API if the customer is co
 2. OR
 3. Setup a new project with NextJS 14 - This will be easier to setup if there is no need for complex data processing
 
-For this Task, I will go with NextJs
+For this Task, I will go with Django (Backend) and React (Frontend)
+
+### Example Code
+This is an example code where the Customer Service Representative asks the AI Assistant to calculate fees for transfering £2000. fee is 2.5% and fetch company poilcy related to processing fees above £1000.
+
+```
+import openai
+from openai import OpenAI
+
+client = OpenAI(api_key='OPEN_API_KEY')
+
+# Calculate the transfer fee
+def calculate_transfer_fee(amount, fee_percentage):
+    return amount * (fee_percentage / 100)
+
+# Fetch company policy
+def fetch_company_policy(amount):
+    if amount > 1000:
+        return "For transfers above £1000, the processing fee rate is 2.5%."
+    else:
+        return "For transfers below or equal to £1000, the processing fee rate is 1.5%."
+
+# Define the function tools
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "calculate_transfer_fee",
+            "description": "Calculate the transfer fee based on the amount and fee percentage",
+            "parameters": {
+                "amount": {
+                    "type": "number",
+                    "description": "The amount of money to be transferred"
+                },
+                "fee_percentage": {
+                    "type": "number",
+                    "description": "The fee percentage"
+                }
+            },
+            "required": ["amount", "fee_percentage"]
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "fetch_company_policy",
+            "description": "Fetch the company policy related to processing fees for certain transfer amounts",
+            "parameters": {
+                "amount": {
+                    "type": "number",
+                    "description": "The transfer amount to check the policy for"
+                }
+            },
+            "required": ["amount"]
+        }
+    }
+]
+
+messages = [
+    {"role": "system", "content": "Calculate the fee for transferring £2000 and fetch relevant company policy."},
+    {"role": "user", "content": "I need to transfer £2000. What would the fee be, and what’s the policy on this?"}
+]
+
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=messages,
+    tools=tools
+)
+
+print(response['choices'][0]['message']['content'])
+if response['choices'][0]['message'].get('tool_calls'):
+    for call in response['choices'][0]['message']['tool_calls']:
+        print(f"Function call: {call['function']['name']} Arguments: {call['function']['arguments']}")
+```
 
 
