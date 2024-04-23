@@ -33,6 +33,14 @@ Splitter - Langchain Tool to split documents into chunks of data
 OpenAI Embeddings: to create vectors from each chunk
 Superbase: store the chucks in the vetor store
 
+#### Process Flow
+1. User Input: this is the users question or prompt
+2. Converstaion Memory: save users question to converstion store
+3. OpenAI GPT-4-turbo  - format users question to a concise and precise question
+4. OpenAI Embeddings Model - pass the formatted question to create vectors from it
+5. Send the vector store to superbase vector store to get back chunck(s) with the nearest match which are most likely to contain the answer to the users question
+6. Pass the orginal user input, converstation history and returned chunk to an OpenAI GPT-4-turbo to get the accurate answer
+
 ### Development
 1. Setup a new project using Django (Backend) and React (Frontend)
 2. 
