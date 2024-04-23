@@ -27,13 +27,14 @@ For the purposes of this task, I will select Open AI GPT-4-turbo and LangChain f
 NB: For RAG and Function calling, we can use Assistant API if the customer is compfortable uploading their documents to OpenAI. This actually simplifies the process but will not be suitable for complex and large documents.
 
 ### App Flow Diagram
-#### Loading Documents in Vector Store
-Information Source: database that holds the company information that the customer service representatives use
-Splitter - Langchain Tool to split documents into chunks of data
-OpenAI Embeddings: to create vectors from each chunk
-Superbase: store the chucks in the vetor store
-![Alt Text for Image](/charlesjyde/diagram.drawio.png)
+#### Load Documents in Vector Store
+1. Information Source: database that holds the company information that the customer service representatives use
+2. Splitter - Langchain Tool to split documents into chunks of data
+3. OpenAI Embeddings: to create vectors from each chunk
+4. Superbase: store the chucks in the vetor store
+
 #### Process Flow
+![Alt Text for Image](/charlesjyde/diagram.drawio.png)
 1. User Input: this is the users question or prompt
 2. Converstaion Memory: save users question to converstion store
 3. OpenAI GPT-4-turbo  - format users question to a concise and precise question
