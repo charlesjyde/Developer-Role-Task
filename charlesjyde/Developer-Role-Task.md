@@ -43,9 +43,10 @@ NB: For RAG and Function calling, we can use Assistant API if the customer is co
 6. Pass the orginal user input, converstation history and returned chunk to an OpenAI GPT-4-turbo to get the accurate answer
 
 ### Development
-1. Setup a new project using Django (Backend) and React (Frontend)
-2. 
+1. Setup a new project using Django (Backend) and React (Frontend) - suitable for complex data processing
+2. OR
+3. Setup a new project with NextJS 14 - This will be easier to setup if there is no need for complex data processing
 
-
+For this Task, I will go with NextJs
 
 
