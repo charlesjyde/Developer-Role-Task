@@ -32,7 +32,7 @@ Information Source: database that holds the company information that the custome
 Splitter - Langchain Tool to split documents into chunks of data
 OpenAI Embeddings: to create vectors from each chunk
 Superbase: store the chucks in the vetor store
-
+![Alt Text for Image](/charlesjyde/diagram.drawio.png)
 #### Process Flow
 1. User Input: this is the users question or prompt
 2. Converstaion Memory: save users question to converstion store
