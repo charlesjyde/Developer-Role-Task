@@ -28,6 +28,7 @@ NB: For RAG and Function calling, we can use Assistant API if the customer is co
 
 ### App Flow Diagram
 #### Load Documents in Vector Store
+![Alt Text for Image](/charlesjyde/loaddiagram.drawio.png)
 1. Information Source: database that holds the company information that the customer service representatives use
 2. Splitter - Langchain Tool to split documents into chunks of data
 3. OpenAI Embeddings: to create vectors from each chunk
